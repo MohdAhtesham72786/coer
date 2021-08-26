@@ -1,0 +1,42 @@
+import tkinter as tk
+ 
+def calculate():
+ 
+  if valRadio.get() == 1:
+    res=int(e1.get())+int(e2.get())
+  elif valRadio.get() == 2:
+    res=int(e1.get())-int(e2.get())
+  elif valRadio.get() == 3:
+    res=int(e1.get())*int(e2.get())
+  elif valRadio.get() == 4:
+    res=int(e1.get())/int(e2.get())
+  else:
+    res ="check radio button"
+  myText.set(res)
+ 
+ 
+root = tk.Tk()
+valRadio = tk.IntVar()
+myText=tk.StringVar()
+e1 =tk.StringVar()
+e2 =tk.StringVar()
+ 
+ 
+tk.Label(root, 
+        text="""Simple Calculator""").grid(row = 0, column = 0) 
+tk.Label( text="First" ).grid(row=1,column = 0)
+tk.Label( text="Second").grid(row=2,column=0)
+result=tk.Label(text="(result)", textvariable=myText).grid(row=5,column=0)
+ 
+tk.Entry(textvariable = e1).grid(row=1, column=1)
+tk.Entry(textvariable = e2).grid(row=2, column=1)
+ 
+r1 = tk.Radiobutton(text="Add(+)",variable=valRadio, value=1).grid(row=3, column=0)
+r2 = tk.Radiobutton(text="Sub(-)",variable=valRadio, value=2).grid(row=3, column=1)
+r3 = tk.Radiobutton(text="Mul(*)",variable=valRadio, value=3).grid(row=4, column=0)
+r4 = tk.Radiobutton(text="Div(/)",variable=valRadio, value=4).grid(row=4, column=1)
+ 
+b = tk.Button(text="Calculate", command=calculate).grid(row=1, column=3)
+ 
+root.mainloop()
+ 
